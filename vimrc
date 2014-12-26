@@ -113,7 +113,9 @@ endif
 
 augroup read_optimized
     autocmd!
+    "TXTs and WIKIs should wrap for readability
     au BufNewFile,BufRead *.txt,*.wiki setlocal wrap lbr
+    "Mappings should be graphical, as text is wrapped.
     au BufNewFile,BufRead *.txt,*.wiki noremap j gj
     au BufNewFile,BufRead *.txt,*.wiki noremap k gk
     au BufNewFile,BufRead *.txt,*.wiki noremap $ g$
@@ -122,6 +124,7 @@ augroup END
 
 augroup filetype_ruby
     autocmd!
+    "Ruby standard is to use 2 spaces as indent.
     au Filetype ruby setlocal ts=2 sw=2
 augroup END
 
@@ -171,14 +174,13 @@ inoremap <Right> <nop>
 
 " Remove GUI in gVIM"
 if has('gui_running')
-		set go-=m
-		set go-=T
-		set go-=r
-		set go-=L
-		set nu
+		set guioptions-=m "Remove menu bar
+		set guioptions-=T "Remove toolbar
+		set guioptions-=r "Remove right-hand scroll bar
+		set guioptions-=L "Remove left-hand scroll bar
 endif
 
-set t_Co=256
+set t_Co=256 "To correctly display colorscheme in terminals
 colorscheme badwolf
 
 "--------------------------------------------------
