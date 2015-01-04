@@ -56,6 +56,8 @@ Plugin 'tmhedberg/matchit'
 Plugin 'scrooloose/syntastic'
 Plugin 'sjl/badwolf'
 Plugin 'tpope/vim-rails'
+Plugin 'vim-scripts/loremipsum'
+Plugin 'rargo/vim-tab'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,8 +82,51 @@ filetype plugin indent on    " required
 noremap <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+"-------------------------
+
 " Airline
 set laststatus=2
+
+"-------------------------
+
+" vim-tab
+"reload GTAGS, ctags.
+function! TabReloadCGtag()
+	"reload GTAGS in current directory
+	cs kill 0
+	"gnu global produce GTAGS, more useful than cscope
+	cs add GTAGS
+	"reload tags in current directory
+	set tags=tags
+endfunction
+
+"some action when enter a tab
+function! TabEnterTag(nr)
+	"echo "tab ". a:nr . " enter"
+	call TabReloadCGtag()
+endfunction
+
+"some action when leave a tab
+function! TabLeaveTag(nr)
+	"echo "tab ". a:nr . " leaves"
+	"nothing
+endfunction
+let g:TabTagTrigger = {'name':'TabTagTriger','pattern':"pattern", 'enter_callback':"TabEnterTag", 'leave_callback':"TabLeaveTag" }
+
+"call tab#TabShowTrigger()
+call tab#TabAddTrigger(g:TabTagTrigger)
+
+"movement between tabs
+nnoremap 1 :tabn 1<cr>
+nnoremap 2 :tabn 2<cr>
+nnoremap 3 :tabn 3<cr>
+nnoremap 4 :tabn 4<cr>
+nnoremap 5 :tabn 5<cr>
+nnoremap 6 :tabn 6<cr>
+nnoremap 7 :tabn 7<cr>
+nnoremap 8 :tabn 8<cr>
+nnoremap 9 :tabn 9<cr>
+nnoremap <C-c> :tabclose<cr>
 
 "--------------------------------------------------
 "	MISC
@@ -104,7 +149,7 @@ if has("unix")
     set clipboard=unnamedplus
 endif
 if has("win32")
-    set clipboard=unnamed
+    set clipboard=unnamed endif
 endif
 
 "--------------------------------------------------
@@ -127,6 +172,12 @@ augroup filetype_ruby
     "Ruby standard is to use 2 spaces as indent.
     au Filetype ruby setlocal ts=2 sw=2
 augroup END
+
+augroup filetype_html
+    autocmd!
+    au Filetype html setlocal ts=2 sw=2
+augroup END
+
 
 augroup filetype_java
     autocmd!
