@@ -143,6 +143,17 @@ set backspace=2
 set showmatch
 set expandtab
 set number
+set scrolloff = 3
+set ai
+set showcmd
+set hlsearch
+set incsearch
+set showmatch
+set ignorecase
+set smartcase
+set visualbell t_vb=
+set novisualbell
+set backspace=indent,eol,start
 
 " Yank & Put to/from standard clipboard
 if has("unix")
@@ -202,7 +213,7 @@ nnoremap <leader>' e<esc>a'<esc>hbi'<esc>lel
 vnoremap <leader>" <esc>`<i"<esc>`>la"<esc>
 vnoremap <leader>' <esc>`<i'<esc>`>la'<esc>
 vnoremap <leader>( <esc>`<i(<esc>`>la)<esc>
-inoremap jk <esc>l
+inoremap jk <esc>
 vnoremap <leader>p "_dP
 onoremap p i(
 onoremap " i"
@@ -211,13 +222,6 @@ onoremap il( :<c-u>normal! F)vi(<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap il} :<c-u>normal! F}vi{<cr>
 nnoremap <C-o> o<esc>
-
-" Temporal
-inoremap <esc> <nop>
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
 
 "--------------------------------------------------
 "	GRAPHIC OPTIONS
