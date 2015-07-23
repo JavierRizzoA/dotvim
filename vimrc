@@ -1,6 +1,5 @@
-
 " Javier Rizzo
-" 2014
+" 2015
 
 "--------------------------------------------------
 "	VUNDLE
@@ -80,12 +79,21 @@ filetype plugin indent on    " required
 
 " NerdTree
 noremap <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+augroup nerdtree
+    autocmd!
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+augroup END
 
 "-------------------------
 
 " Airline
 set laststatus=2
+
+"-------------------------
+
+"Syntastic
+let g:syntastic_python_python_exec = '/usr/bin/python2'
 
 "-------------------------
 
@@ -143,7 +151,7 @@ set backspace=2
 set showmatch
 set expandtab
 set number
-set scrolloff = 3
+set scrolloff=3
 set ai
 set showcmd
 set hlsearch
@@ -157,10 +165,10 @@ set backspace=indent,eol,start
 
 " Yank & Put to/from standard clipboard
 if has("unix")
-    set clipboard=unnamedplus
+    set clipboard+=unnamedplus
 endif
 if has("win32")
-    set clipboard=unnamed endif
+    set clipboard+=unnamed
 endif
 
 "--------------------------------------------------
@@ -190,8 +198,9 @@ augroup filetype_html
 augroup END
 
 
-augroup filetype_java
+augroup filetype_python
     autocmd!
+    au Filetype python setlocal wrap colorcolumn=80
 augroup END
 
 "--------------------------------------------------
@@ -223,6 +232,19 @@ onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap il} :<c-u>normal! F}vi{<cr>
 nnoremap <C-o> o<esc>
 
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap jk <C-\><C-n>
+    tnoremap <A-h> <C-\><C-n><C-w>h
+    tnoremap <A-j> <C-\><C-n><C-w>j
+    tnoremap <A-k> <C-\><C-n><C-w>k
+    tnoremap <A-l> <C-\><C-n><C-w>l
+    nnoremap <A-h> <C-w>h
+    nnoremap <A-j> <C-w>j
+    nnoremap <A-k> <C-w>k
+    nnoremap <A-l> <C-w>l
+endif
+
 "--------------------------------------------------
 "	GRAPHIC OPTIONS
 "--------------------------------------------------
@@ -237,5 +259,6 @@ endif
 
 set t_Co=256 "To correctly display colorscheme in terminals
 colorscheme badwolf
+set colorcolumn=80
 
 "--------------------------------------------------
