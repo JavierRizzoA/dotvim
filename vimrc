@@ -60,6 +60,7 @@ Plugin 'sjl/badwolf'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-scripts/loremipsum'
 Plugin 'rargo/vim-tab'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
