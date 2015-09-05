@@ -9,11 +9,14 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-if has("unix")
+if has("nvim")
+    set rtp+=~/.nvim/bundle/Vundle.vim
+    let path='~/.nvim/bundle'
+    call vundle#begin(path)
+elseif has("unix")
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
-endif
-if has("win32")
+elseif has("win32")
     set rtp+=~/vimfiles/bundle/Vundle.vim/
     let path='~/vimfiles/bundle'
     call vundle#begin(path)
