@@ -61,6 +61,8 @@ Plugin 'tpope/vim-rails'
 Plugin 'vim-scripts/loremipsum'
 Plugin 'rargo/vim-tab'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'mattn/emmet-vim'
+Plugin 'gosukiwi/vim-atom-dark'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -129,16 +131,16 @@ let g:TabTagTrigger = {'name':'TabTagTriger','pattern':"pattern", 'enter_callbac
 call tab#TabAddTrigger(g:TabTagTrigger)
 
 "movement between tabs
-nnoremap 1 :tabn 1<cr>
-nnoremap 2 :tabn 2<cr>
-nnoremap 3 :tabn 3<cr>
-nnoremap 4 :tabn 4<cr>
-nnoremap 5 :tabn 5<cr>
-nnoremap 6 :tabn 6<cr>
-nnoremap 7 :tabn 7<cr>
-nnoremap 8 :tabn 8<cr>
-nnoremap 9 :tabn 9<cr>
-nnoremap <C-c> :tabclose<cr>
+"nnoremap 1 :tabn 1<cr>
+"nnoremap 2 :tabn 2<cr>
+"nnoremap 3 :tabn 3<cr>
+"nnoremap 4 :tabn 4<cr>
+"nnoremap 5 :tabn 5<cr>
+"nnoremap 6 :tabn 6<cr>
+"nnoremap 7 :tabn 7<cr>
+"nnoremap 8 :tabn 8<cr>
+"nnoremap 9 :tabn 9<cr>
+"nnoremap <C-c> :tabclose<cr>
 
 "--------------------------------------------------
 "	MISC
@@ -201,6 +203,15 @@ augroup filetype_html
     au Filetype html setlocal ts=2 sw=2
 augroup END
 
+augroup filetype_javascript
+    autocmd!
+    au Filetype javascript setlocal ts=2 sw=2
+augroup END
+
+augroup filetype_css
+    autocmd!
+    au Filetype css setlocal ts=2 sw=2
+augroup END
 
 augroup filetype_python
     autocmd!
@@ -262,7 +273,7 @@ if has('gui_running')
 endif
 
 set t_Co=256 "To correctly display colorscheme in terminals
-colorscheme badwolf
+colorscheme atom-dark-256
 set colorcolumn=80
-
+au BufNewFile,BufRead *.txt,*.wiki setlocal colorcolumn=
 "--------------------------------------------------
