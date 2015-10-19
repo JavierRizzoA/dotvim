@@ -63,6 +63,7 @@ Plugin 'rargo/vim-tab'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mattn/emmet-vim'
 Plugin 'gosukiwi/vim-atom-dark'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
